@@ -12,7 +12,7 @@ async function saveSurvey(req, res) {
             const surveyDetailsCollection = client.db('studentsurveyapp').collection('surveyDetails');
             const surveyDetailsResult = await surveyDetailsCollection.findOne({ _id: ObjectId(surveyId) });
             if (surveyDetailsResult) {
-                const surveyCollection = client.db('studentsurveyapp').collection('survey');
+                const surveyCollection = client.db('studentsurveyapp').collection('surveys');
                 const result = await surveyCollection.insertOne({
                     surveyId: ObjectId(surveyId),
                     rating: +rating,
@@ -26,8 +26,9 @@ async function saveSurvey(req, res) {
                 } else {
                     res.status(500).send({ message: "Some error occurred while saving your survey. Please try again later." });
                 }
+            } else {
+                res.status(400).send({ message: "This is an invalid or expired survey link. Please contact admin." });
             }
-            res.status(400).send({ message: "This is an invalid or expired survey link. Please contact admin." });
         } else {
             res.status(400).send({ message: "All fields are mandatory. Please resubmit filling up all fields." });
         }
