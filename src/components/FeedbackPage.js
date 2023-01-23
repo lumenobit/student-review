@@ -2,7 +2,6 @@ import React from 'react';
 import Copyright from './Copyright';
 import Rating from './Rating';
 import withRouter from './withRouter';
-import TeamImg from '../assets/team.png';
 
 class FeedbackPage extends React.Component {
 
