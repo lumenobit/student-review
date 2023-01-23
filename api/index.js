@@ -1,9 +1,6 @@
-const path = require('path')
-if (process.env.NODE_ENV !== 'production') {
-    try {
-        require('dotenv').config({ path: path.resolve(process.cwd, '.env') });
-    } catch (ex) { }
-}
+try {
+    require('dotenv').config();
+} catch (ex) { }
 const express = require('express');
 const bodyParser = require('body-parser');
 const apiRouter = require('./api');
