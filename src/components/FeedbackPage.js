@@ -1,6 +1,8 @@
 import React from 'react';
+import Copyright from './Copyright';
 import Rating from './Rating';
 import withRouter from './withRouter';
+import TeamImg from '../assets/team.png';
 
 class FeedbackPage extends React.Component {
 
@@ -63,8 +65,11 @@ class FeedbackPage extends React.Component {
     render() {
         return (
             <div className='full-page-gray'>
-                <div className='container py-3'>
+                <div className='container pt-4'>
                     <form name="feedbackForm" onSubmit={(e) => this.onFormSubmit(e)} onReset={() => { this.resetForm() }}>
+                        <div className='card mb-3 feedback-banner'>
+                        </div>
+
                         <div className='card border-top-lg mb-3'>
                             <div className='card-body'>
                                 <h1 className='h2 card-title fw-normal'>Bitling Feedback!</h1>
@@ -117,6 +122,7 @@ class FeedbackPage extends React.Component {
                         </div>
                     </form>
                 </div>
+                <Copyright className="container" />
                 {
                     this.state.isLoading && (
                         <div id="loader" className="dialog">

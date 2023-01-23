@@ -11,7 +11,7 @@
 
 .full-page-gray {
   min-height: 100vh;
-  background-color: #f7f7f7;
+  background-color: #f9f9f9;
 }
 
 .page-img {
@@ -50,6 +50,14 @@
   filter: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' height='0'><filter id='greyscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale");
   filter: gray;
   -webkit-filter: grayscale(1);
+}
+
+.feedback-banner {
+  background-image: url(./assets/team.png);
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .border-top-lg {
