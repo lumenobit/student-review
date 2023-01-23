@@ -67,17 +67,17 @@ class FeedbackPage extends React.Component {
             <div className='full-page-gray'>
                 <div className='container pt-4'>
                     <form name="feedbackForm" onSubmit={(e) => this.onFormSubmit(e)} onReset={() => { this.resetForm() }}>
-                        <div className='card mb-3 feedback-banner'>
+                        <div className='card mb-3 feedback-banner shadow-sm'>
                         </div>
 
-                        <div className='card border-top-lg mb-3'>
+                        <div className='card border-top-lg mb-3 shadow-sm'>
                             <div className='card-body'>
                                 <h1 className='h2 card-title fw-normal'>Bitling Feedback!</h1>
                                 <p className='card-text'>Your opinions matter! Share honest feedback on the Bitling Programme and let us improve it together.</p>
                             </div>
                         </div>
 
-                        <div className='card mb-3'>
+                        <div className='card mb-3 shadow-sm'>
                             <div className='card-body'>
                                 <label className='h5 card-title fw-normal'>Rate your experience <span className='text-danger'>*</span></label>
                                 <div className='card-text'>
@@ -86,21 +86,21 @@ class FeedbackPage extends React.Component {
                             </div>
                         </div>
 
-                        <div className='card mb-3'>
+                        <div className='card mb-3 shadow-sm'>
                             <div className='card-body'>
                                 <label htmlFor="likeComment" className='h5 card-title fw-normal'>What are all the things you liked about this programme? <span className='text-danger'>*</span></label>
                                 <textarea className="form-control" id="likeComment" name="likeComment" rows="3" required></textarea>
                             </div>
                         </div>
 
-                        <div className='card mb-3'>
+                        <div className='card mb-3 shadow-sm'>
                             <div className='card-body'>
                                 <label htmlFor="programImprovement" className='h5 card-title fw-normal'>What can we do to improve the programme? <span className='text-danger'>*</span></label>
                                 <textarea className="form-control" id="programImprovement" name="programImprovement" rows="3" required></textarea>
                             </div>
                         </div>
 
-                        <div className='card mb-3'>
+                        <div className='card mb-3 shadow-sm'>
                             <div className='card-body'>
                                 <label htmlFor="trainerImprovement" className='h5 card-title fw-normal'>What improvement do you suggest for your trainer? <span className='text-danger'>*</span></label>
                                 <textarea className="form-control" id="trainerImprovement" name="trainerImprovement" rows="3" required></textarea>
@@ -109,7 +109,7 @@ class FeedbackPage extends React.Component {
 
                         {
                             this.state.message && (
-                                <div className={`alert alert-dismissible ${this.state.isError ? 'alert-danger' : 'alert-success'}`} role="alert">
+                                <div className={`alert alert-dismissible shadow-sm ${this.state.isError ? 'alert-danger' : 'alert-success'}`} role="alert">
                                     {this.state.isError ? (<strong>Error!</strong>) : <strong>Awesome!</strong>} {this.state.message}
                                     <button type="button" className="btn-close" aria-label="Close" onClick={() => this.dismissAlert()}></button>
                                 </div>
@@ -117,8 +117,8 @@ class FeedbackPage extends React.Component {
                         }
 
                         <div className='d-flex justify-content-between'>
-                            <button className='btn btn-primary' type='submit'>Submit</button>
-                            <button className='btn btn-secondary' type='reset'>Reset Form</button>
+                            <button className='btn btn-primary shadow-sm' type='submit'>Submit</button>
+                            <button className='btn btn-secondary shadow-sm' type='reset'>Reset Form</button>
                         </div>
                     </form>
                 </div>
