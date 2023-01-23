@@ -11,11 +11,16 @@ class Rating extends React.Component {
 
     ratingList = [1, 2, 3, 4, 5];
 
+    resetRating() {
+        this.setState(() => ({
+            selectedRating: 0
+        }));
+    }
+
     ratingClicked(rating) {
         this.setState(() => ({
             selectedRating: rating
         }));
-        this.props.ratingChange && this.props.ratingChange(rating);
     }
 
     isRatingBlocked(rating) {
@@ -36,7 +41,10 @@ class Rating extends React.Component {
                 <ul className='rating-list'>
                     {this.ratingList.map(rating => (
                         <li key={rating} className="me-2">
-                            <input type="radio" id={`rating-${rating}`} name="rating" value={rating} onChange={() => this.ratingClicked(rating)} required />
+                            <input type="radio" id={`rating-${rating}`}
+                                name="rating" value={rating}
+                                checked={rating === this.state.selectedRating}
+                                onChange={() => this.ratingClicked(rating)} required />
                             <label htmlFor={`rating-${rating}`}>
                                 <span className={`material-icons ${this.getRatingClass(rating)}`}>
                                     {this.isRatingBlocked(rating) ? 'star' : 'star_border'}

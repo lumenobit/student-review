@@ -7,8 +7,10 @@ class FeedbackPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            rating: 0,
             isLoading: false
         }
+        this.ratingComponent = React.createRef();
     }
 
     async onFormSubmit(event) {
@@ -31,6 +33,7 @@ class FeedbackPage extends React.Component {
                 }
             })
             const result = await response.json();
+            this.resetForm();
             this.setState(() => ({
                 isLoading: false,
                 isError: !response.ok,
@@ -43,7 +46,11 @@ class FeedbackPage extends React.Component {
                 message: "Some error occurred while saving your survey. Please try again later."
             }));
         }
+    }
 
+    resetForm(rating) {
+        document.forms['feedbackForm'].reset();
+        this.ratingComponent.current.resetRating();
     }
 
     dismissAlert() {
@@ -57,7 +64,7 @@ class FeedbackPage extends React.Component {
         return (
             <div className='full-page-gray'>
                 <div className='container py-3'>
-                    <form name="feedbackForm" onSubmit={(e) => this.onFormSubmit(e)}>
+                    <form name="feedbackForm" onSubmit={(e) => this.onFormSubmit(e)} onReset={() => { this.resetForm() }}>
                         <div className='card border-top-lg mb-3'>
                             <div className='card-body'>
                                 <h1 className='h2 card-title fw-normal'>Bitling Feedback!</h1>
@@ -69,7 +76,7 @@ class FeedbackPage extends React.Component {
                             <div className='card-body'>
                                 <label className='h5 card-title fw-normal'>Rate your experience <span className='text-danger'>*</span></label>
                                 <div className='card-text'>
-                                    <Rating />
+                                    <Rating ref={this.ratingComponent} />
                                 </div>
                             </div>
                         </div>
