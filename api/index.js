@@ -4,7 +4,7 @@ try {
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const apiRouter = require('./server/api');
+const apiRouter = require('./api');
 const cors = require('cors');
 
 const app = express();
