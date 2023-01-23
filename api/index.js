@@ -1,8 +1,10 @@
-try {
-    require('dotenv').config();
-} catch (ex) { }
+const path = require('path')
+if (process.env.NODE_ENV !== 'production') {
+    try {
+        require('dotenv').config({ path: path.resolve(process.cwd, '.env') });
+    } catch (ex) { }
+}
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
 const apiRouter = require('./api');
 const cors = require('cors');
@@ -18,12 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.use('/api', apiRouter);
-
-// app.use(express.static(path.resolve(__dirname, 'client/build')));
-
-// app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, 'client/build/index.html'));
-// })
 
 app.listen(PORT, () => {
     console.log(`App listening to Port ${PORT}`);
