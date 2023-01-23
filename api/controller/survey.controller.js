@@ -77,9 +77,9 @@ async function getAllSurveys(req, res) {
         const result = await collection.aggregate(agg).toArray();
 
         const output = {
-            totalCount: result[0].count[0].count,
-            totalPage: Math.ceil(result[0].count[0].count / limit),
-            data: result[0].data
+            totalCount: result[0]?.count[0]?.count || 0,
+            totalPage: result[0]?.count[0]?.count ? Math.ceil(result[0]?.count[0]?.count / limit) : 0,
+            data: result[0]?.data
         }
 
         res.send(output);
