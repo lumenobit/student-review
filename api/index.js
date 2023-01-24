@@ -5,13 +5,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const apiRouter = require('./api');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
 if (process.env.NODE_ENV !== 'production') {
-    app.use(cors());
+    app.use(cors({
+        credentials: true,
+        origin: 'http://localhost:3000'
+    }));
 }
+
+app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())

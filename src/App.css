@@ -110,6 +110,18 @@
   color: #00cd00;
 }
 
+.like-comment {
+  color: #14a8ff;
+}
+
+.programme-improvement {
+  color: #ff0fa8;
+}
+
+.trainer-improvement {
+  color: #ae27ff;
+}
+
 /* Ripple effect */
 .ripple {
   background-position: center;
@@ -193,4 +205,52 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.login-section {
+  padding-top: 7rem;
+}
+
+.login-wrap {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 10px 34px -15px rgb(0 0 0 / 24%);
+}
+
+.login-wrap .icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  font-size: 30px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.login-wrap .icon span {
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.login-wrap h3 {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.submit-button-wrapper {
+  position: relative;
+}
+
+.submit-button-wrapper .submit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.badge {
+  line-height: var(--bs-body-line-height);
 }

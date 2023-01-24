@@ -1,5 +1,6 @@
 import React from 'react';
 import Copyright from './Copyright';
+import PageLoader from './PageLoader';
 import Rating from './Rating';
 import withRouter from './withRouter';
 
@@ -20,12 +21,12 @@ class FeedbackPage extends React.Component {
         const feedback = Object.fromEntries(formData);
         feedback.surveyId = this.props.params.id;
         const saveApiUrl = process.env.NODE_ENV !== 'production' ? 'http://localhost:4000/api/survey' : '/api/survey';
+        this.setState(() => ({
+            isLoading: true,
+            message: null,
+            isError: false
+        }));
         try {
-            this.setState(() => ({
-                isLoading: true,
-                message: null,
-                isError: false
-            }));
             const response = await fetch(saveApiUrl, {
                 body: JSON.stringify(feedback),
                 method: "POST",
@@ -124,13 +125,7 @@ class FeedbackPage extends React.Component {
                 <Copyright className="container" />
                 {
                     this.state.isLoading && (
-                        <div id="loader" className="dialog">
-                            <div className="dialog-wrapper loader-wrapper">
-                                <div className="loader"></div>
-                                <span className="loader-text">Please wait...</span>
-                            </div>
-                            <div className="dialog-backdrop"></div>
-                        </div>
+                        <PageLoader />
                     )
                 }
             </div>

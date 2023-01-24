@@ -85,7 +85,7 @@ async function getAllSurveys(req, res) {
         res.send(output);
     } catch (ex) {
         console.log(ex);
-        res.status(500).send({ message: "Some error occurred while retrieving data. Please try again later" });
+        res.status(500).send({ message: "Some error occurred while retrieving data. Please try again later." });
     }
 
 }
