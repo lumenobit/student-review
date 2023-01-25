@@ -13,6 +13,8 @@ function DashboardPage(props) {
     const [avgRating, setAvgRating] = useState(0);
     const [feedbacks, setFeedbacks] = useState([]);
 
+    const [shadow, setShadow] = useState('');
+
     const navigate = useNavigate();
 
     const feedbackResponse = async () => {
@@ -27,7 +29,7 @@ function DashboardPage(props) {
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            })
+            });
 
             const res = await response.json();
             if (response.ok) {
@@ -39,18 +41,24 @@ function DashboardPage(props) {
                 throw new Error(res.message || "Something went wrong!");
             }
         } catch (ex) {
-            setError("Something went wrong!")
+            setError("Something went wrong!");
         }
         setLoading(false);
     }
 
     const handleScroll = () => {
-        const scrollTop = document.documentElement.scrollTop
-        const scrollHeight = document.documentElement.scrollHeight
-        const clientHeight = document.documentElement.clientHeight
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+
+        if (scrollTop > 0) {
+            setShadow('shadow-sm');
+        } else {
+            setShadow('');
+        }
 
         if (Math.round(scrollTop) + clientHeight >= scrollHeight && page < totalPage && !loading) {
-            setPage(page + 1)
+            setPage(page + 1);
         }
     }
 
@@ -80,7 +88,7 @@ function DashboardPage(props) {
 
     return (
         <>
-            <div className='sticky-header pt-3'>
+            <div className={`sticky-header pt-3 ${shadow}`}>
                 <div className='container'>
                     <div className='d-flex justify-content-between align-items-center'>
                         <h1 className='h3 mb-0'>Dashboard</h1>
