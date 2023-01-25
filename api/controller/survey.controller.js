@@ -55,7 +55,17 @@ async function getAllSurveys(req, res) {
                 '$facet': {
                     'count': [
                         {
-                            '$count': 'count'
+                            '$count': 'data'
+                        }
+                    ],
+                    'avgRating': [
+                        {
+                            '$group': {
+                                '_id': null,
+                                'data': {
+                                    '$avg': '$rating'
+                                }
+                            }
                         }
                     ],
                     'data': [
@@ -71,14 +81,15 @@ async function getAllSurveys(req, res) {
                     ]
                 }
             }
-        ]
+        ];
 
 
         const result = await collection.aggregate(agg).toArray();
 
         const output = {
-            totalCount: result[0]?.count[0]?.count || 0,
-            totalPage: result[0]?.count[0]?.count ? Math.ceil(result[0]?.count[0]?.count / limit) : 0,
+            totalCount: result[0]?.count[0]?.data || 0,
+            totalPage: result[0]?.count[0]?.data ? Math.ceil(result[0]?.count[0]?.data / limit) : 0,
+            avgRating: result[0]?.avgRating[0]?.data,
             data: result[0]?.data
         }
 

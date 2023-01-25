@@ -254,3 +254,10 @@
 .badge {
   line-height: var(--bs-body-line-height);
 }
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+}
